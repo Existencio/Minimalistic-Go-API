@@ -1,0 +1,27 @@
+# бинарники Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# билд
+main
+app
+go-api-demo
+
+# кеш
+*.test
+*.out
+
+# зависимости
+vendor/
+
+# env
+.env
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
