@@ -20,6 +20,9 @@ vendor/
 # env
 .env
 
+# local data
+posts.json
+
 # macOS
 .DS_Store
 
