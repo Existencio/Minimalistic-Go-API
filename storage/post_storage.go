@@ -62,7 +62,7 @@ func SavePosts() error { // ? error - тип возвращаемого знач
 
 // ! Функция, отдающая текущий список постов из памяти
 // ? а именно из переменной posts
-func GetAllPosts() []models.Post { // ? []models.Post это тип возвращаемого значения
+func GetPosts() []models.Post { // ? []models.Post это тип возвращаемого значения
 	return posts
 }
 

@@ -1,16 +1,17 @@
 package models
+
 // ? Значит: этот файл принадлежит пакету models
 
 // ! Создаём новый собственный пользовательский тип данных, основанный на struct
 // ! под названием Post
-type Post struct { 
+type Post struct {
 	ID     int    `json:"id"`
 	Title  string `json:"title"`
 	Body   string `json:"body"`
 	UserID int    `json:"userId"`
 }
 
-// ! Теперь переменная post имеет тип Post
+// ! Теперь можно создавать переменные с типом Post
 
 // ? Третий столбик - это т.н. struct tag
 // ? Это подсказка для Go, как превращать структуру в JSON и обратно
