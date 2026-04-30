@@ -80,3 +80,49 @@ func AddPost(post models.Post) error { // ? post - имя параметра, mo
 	// ? обрабатывать её нужно там, где вызвали AddPost()
 	return SavePosts()
 }
+
+func GetPostsByID(id int) (models.Post, bool) { // ? 1 скобки - параметр, 2 - возвращаемые значения
+	for _, post := range posts { // ? при range Go даёт два значения index, value
+		if post.ID == id {
+			return post, true
+		}
+	}
+	return models.Post{}, false // ? пустой объект
+}
+
+func UpdatePost(id int, updatedPost models.Post) (models.Post, bool, error) {
+	for i, post := range posts {
+		if post.ID == id {
+			updatedPost.ID = id
+			posts[i] = updatedPost
+
+			err := SavePosts()
+			if err != nil {
+				return models.Post{}, false, err
+			}
+
+			return updatedPost, true, nil
+		}
+	}
+
+	return models.Post{}, false, nil
+}
+
+func DeletePost(id int) (bool, error) {
+	for i, post := range posts {
+		if id == post.ID {
+			posts = append(posts[:i], posts[i+1:]...)
+			// ? ... распаковка слайса позволяет передать посты как отдельные элементы
+			// ? потому что для элементов слайса задан тип Post, а без ... будут элементы с типом слайс
+
+			err := SavePosts()
+			if err != nil {
+				return false, err
+			}
+
+			return true, nil
+		}
+	}
+
+	return false, nil
+}
